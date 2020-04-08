@@ -65,8 +65,8 @@ def login():
 
 @server.route("/login/validate", methods=["POST"])
 def validate_login():
-    username = request.form.get("username")             # admin: gängiges
-    pwd = request.form.get("password")                  # gabriel hallo1718
+    username = request.form.get("username")
+    pwd = request.form.get("password")
     case = customer.login(username, pwd)
     if case:
         session["username"] = username
