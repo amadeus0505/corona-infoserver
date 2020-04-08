@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@font-face {
+  font-family: "oneday";
+  src: url("ONEDAY.ttf");
+}
+
+:root {
+  --light: #ede6e3;
+  --dark: #494850;
+  --accent: #f06449;
+  --light50: rgba(237, 230, 227, 0.5);
+  --transition: all 0.3s ease 0s;
+  --border: 2px var(--light) solid;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header li, a, button {
+  font-family: 'oneday', "Roboto", sans-serif;
+  text-decoration: none;
+  color: var(--light)
+}
+
+header {
+  font-size: 20px;
+  background: var(--dark);
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 0.625rem 10%;
+}
+
+.links {
+  list-style: none;
+}
+
+.links li{
+  display: inline-block;
+  margin-right: 1.875rem;
+  margin-top: 10px;
+}
+
+.links a{
+  font-family: 'oneday', "Roboto", sans-serif;
+  transition: var(--transition);
+}
+
+.links a:hover {
+  color: var(--accent)
+}
+
+header button {
+  font-size: 1em;
+  margin-left: 20px;
+  background: transparent;
+  border: var(--border);
+  padding: 0.25rem;
+  width: 5em;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  align-self: flex-end;
+  margin-top: 5px;
+  margin-right: -40px;
+}
+
+header button:hover {
+  background-color: var(--accent)
+}
+
+#signup {
+  background-color: var(--accent);
+}
+
+#signup:hover {
+  background-color: var(--dark)
+}
+
+#loginfo{
+  text-align: center;
+  font-size: 10px;
+}
+
+@media screen and (min-width: 1080px) {
+  :root {
+    --border: 3px var(--light) solid;
+  }
+
+  header {
+    font-size: 20px;
+    height: 50px;
+    justify-content: space-between;
+  }
+
+  header button {
+    margin-left: 30px;
+    margin-right: 0;
+  }
+
+  .links li{
+    display: inline-block;
+    margin-right: 1.875rem;
+    margin-top: 0;
+  }
+
+
+  #loginfo {
+    font-size: 16px;
+  }
+}

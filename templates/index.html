@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <link rel="icon" href="#">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/navbar.css')}}">
+    <title>Welcome</title>
+    <script type="text/javascript">
+      function redirect(path) {
+        window.location.href = "/login";
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/graphs">Graphs</a></li>
+        </ul>
+      </nav>
+      <div>
+        {%if username is none%}
+        <a href="/login"><button>Login</button></a>
+        <a href="/signup"><button id="signup">Sign Up</button></a>
+        {%else%}
+        <a id="loginfo">logged in as {{username}}</a>
+        <a href="/logout"><button>Logout</button></a>
+        {%endif%}
+      </div>
+    </header>
+    <main>
+      <h1>Welcome to the coronavirus info page</h1>
+      <h2>Please choos a country in order to get informations</h2>
+      <form action="/" method="get">
+        <div class="form_wrapper">
+          <select class="select" name="country" required>
+            {% for country in countries%}
+              <option id="{{country}}" value="{{country.lower().replace(' ','_')}}">{{country}}</option>
+            {% endfor %}
+          </select>
+          <br>
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      {% if country %}
+        <script type="text/javascript">
+          document.getElementById("{{country.replace("_",  "")}}").selected = true
+        </script>
+      {% endif %}
+    </main>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <link rel="icon" href="#">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/navbar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/graphs.css')}}">
+    <title>Display graph</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/graphs">Graphs</a></li>
+        </ul>
+      </nav>
+      <div>
+        {%if username is none%}
+        <a href="/login"><button>Login</button></a>
+        <a href="/signup"><button id="signup">Sign Up</button></a>
+        {%else%}
+        <a id="loginfo">logged in as {{username}}</a>
+        <a href="/logout"><button>Logout</button></a>
+        {%endif%}
+      </div>
+    </header>
+    <main>
+      <form id="select_form" action="/graphs" method="get">
+        <div class="form_wrapper">
+          <select onchange="reload()" class="select" name="country" required>
+            {% for country in countries%}
+              <option id="{{country}}" value="{{country.lower().replace(' ','_')}}">{{country}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </form>
+      <img src="{{url_for('static', filename='img/graphs/' + country + '.png')}}" alt="Cannot display graph">
+    </main>
+      <script type="text/javascript">
+        function reload() {
+          document.getElementById("select_form").submit()
+        }
+        document.getElementById("{{country.capitalize().replace("_", " ")}}").selected = true
+      </script>
+
+  </body>
+</html>

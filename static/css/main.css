@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@font-face {
+  font-family: "oneday";
+  src: url("ONEDAY.ttf");
+}
+
+:root {
+  --light: #ede6e3;
+  --dark: #494850;
+  --accent: #f06449;
+  --light50: rgba(237, 230, 227, 0.5);
+  --transition: all 0.3s ease 0s;
+  --border: 2px var(--light) solid;
+}
+
+html, body{
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  background-image: url("corona_img.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: 'oneday', "Roboto", sans-serif;
+}
+
+main {
+  font-size: 15px;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  width: 90%;
+  color: white;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.form_wrapper {
+  width: 100%;
+  position: absolute;
+  display: block;
+  text-align: center;
+}
+
+.select {
+  font-family: "oneday", sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  margin-top: 30px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80%;
+  padding: 0.3125rem;
+  border:  var(--border);
+  background: transparent;
+  color: var(--light);
+  outline: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.select::before {
+  content: "";
+  background: magenta;
+  border: 10px white;
+  height: 100px;
+  width: 100px;
+  display: block;
+  position: absolute;
+}
+
+.select:hover {
+  background-color: var(--accent)
+}
+
+.select:focus {
+  transition: none;
+  background-color: var(--dark);
+}
+
+
+.button {
+  font-family: "oneday", "Roboto", sans-serif;
+  font-size: 1em;
+  margin-top: 30px;
+  height: auto;
+  width: 13rem;
+  background: transparent;
+  border: var(--border);
+  color: var(--light);
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 3px 20px 3px 20px;
+}
+
+.button:hover {
+  background-color: var(--accent);
+}
+
+.content {
+  margin-top: 40px;
+}
+
+.content p {
+  margin-top: 10px;
+}
+
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+
+@media screen and (min-width: 1080px) {
+  :root {
+    --border: 3px var(--light) solid;
+  }
+
+  .select {
+    font-size: 0.5em;
+    width: 40%;
+  }
+
+  .button {
+    font-size: 0.5em;
+  }
+
+  main {
+    font-size: 30px;
+  }
+
+}

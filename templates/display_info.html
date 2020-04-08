@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <link rel="icon" href="#">
+    <title>Info zu {{country}}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/navbar.css')}}">
+    <script type="text/javascript">
+      function changed() {
+        document.myform.submit()
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/graphs">Graphs</a></li>
+        </ul>
+      </nav>
+      <div>
+        {%if username is none%}
+        <a href="/login"><button>Login</button></a>
+        <a href="/signup"><button id="signup">Sign Up</button></a>
+        {%else%}
+        <a id="loginfo">logged in as {{username}}</a>
+        <a href="/logout"><button>Logout</button></a>
+        {%endif%}
+      </div>
+    </header>
+    <main>
+      <form name="myform" action="/" method="get">
+        <select class="select" name="date" onchange="changed()">
+          {% for timestamp in available_timestamps %}
+            <option id="{{timestamp}}" value="{{timestamp}}" {% if requested_timestamp == timestamp %} selected {% endif %}>{{datetime.fromtimestamp(timestamp)}}</option>
+          {% endfor %}
+        </select>
+        <input type="text" name="country" value="{{country.lower()}}" hidden>
+      </form>
+      <div class="content">
+        <p>Country: {{country.capitalize()}}</p>
+        <p>Confirmed cases: <span class="red">{{"{:,}".format(confirmed)}}</span></p>
+        <p>Deaths: <span class="red">{{"{:,}".format(deaths)}}</span></p>
+        <p>Recovered people: <span class="green">{{"{:,}".format(reco)}}</span></p>
+        <p>Last info Update: {{datetime.fromtimestamp(last_info_update)}}</p>
+      </div>
+    </main>
+  </body>
+</html>

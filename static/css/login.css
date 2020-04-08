@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@font-face {
+  font-family: "oneday";
+  src: local("ONE DAY");
+}
+
+:root {
+  --light: #ede6e3;
+  --dark: #494850;
+  --dark80: rgba(73, 72, 80, 0.8) ;
+  --accent: #f06449;
+  --light50: rgba(237, 230, 227, 0.5);
+  --transition: all 0.3s ease 0s;
+  --border: 2px var(--light) solid;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'oneday', "Roboto", sans-serif;
+}
+
+html, body{
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  font-family: 'oneday', "Roboto", sans-serif;
+  background-image: url("corona_img.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  padding: auto;
+}
+
+.login_box {
+  position: fixed;
+  top: calc(100px + 45%);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 4px var(--accent) solid;
+}
+
+.form_wrapper {
+  height: 250px;
+  width: 200px;
+  padding-top: 70px;
+}
+
+input {
+  font-family: 'Roboto', sans-serif;
+  width: 130px;
+  text-align: center;
+  margin: 0 auto 20px;
+  display: block;
+  font-size: 1.3rem;
+  border: none;
+  border-bottom: 1px var(--dark80) solid;
+  border-radius: 0;
+  transition: var(--transition);
+}
+
+input:focus{
+  width: 180px;
+  border-color: var(--accent);
+}
+
+.submit {
+  margin-top: 20px;
+  background: transparent;
+  border: 2px var(--dark) solid;
+  cursor: pointer;
+}
+
+.error_message {
+  color: red;
+  text-align: center;
+  margin-top: -10px;
+}
+
+@media screen and (min-width: 1080px) {
+
+  input {
+    border-bottom: 4px var(--dark80) solid;
+    margin-top: 50px;
+    width: 200px;
+    padding-bottom: 5px;
+  }
+
+  input:focus {
+    width: 250px;
+  }
+
+  .submit {
+    border: 4px var(--dark) solid;
+    margin-top: 30px;
+  }
+
+  .submit:hover{
+    background: var(--accent)
+  }
+
+  .form_wrapper {
+    width: 450px;
+    height: 500px;
+    padding-top: 110px;
+  }
+
+  .error_message {
+    margin-top: 30px;
+    font-size: 1.2em;
+  }
+}

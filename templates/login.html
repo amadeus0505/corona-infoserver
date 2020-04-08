@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <link rel="icon" href="#">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/navbar.css')}}">
+    <title>Login</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/graphs">Graphs</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="login_box">
+        <div class="form_wrapper">
+          <form action="/login/validate" method="post">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <input class="submit" type="submit" value="Login">
+            <p {%if not error%} style="display: none" {%endif%} class="error_message">Incorrect password or username</p>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
