@@ -1,2 +1,2 @@
 *.png
-customer.db
+database/customer.db
