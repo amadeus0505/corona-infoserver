@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@font-face {
+  font-family: "oneday";
+  src: url("ONEDAY.ttf");
+}
+
+:root {
+  --light: #ede6e3;
+  --dark: #494850;
+  --accent: #f06449;
+  --light50: rgba(237, 230, 227, 0.5);
+  --transition: all 0.3s ease 0s;
+  --border: 2px var(--light) solid;
+}
+
+html, body{
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  background-image: url("corona_img.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: 'oneday', "Roboto", sans-serif;
+}
+
+main {
+  position: relative;
+  top: 300px;
+}
+
+.button{
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+main h1 {
+  margin-bottom: 40px;
+}
+
+@media screen and (min-width: 1080px) {
+
+  main {
+    top: 400px;
+  }
+
+  main h1 {
+    margin-bottom: 60px;
+  }
+
+  .button {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+}

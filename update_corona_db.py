@@ -75,7 +75,7 @@ def write_data(session: Covid, conn):
     print(f"wrote info in {time.time() - start} seconds")
 
 
-if __name__ == '__main__':
+def update():
     import os
     try:
         covid_session = Covid()

@@ -32,7 +32,7 @@ class Covid(JohnHopkinsCovid):
 
     def get_useful_info_by_country(self, country):
         """
-        :returns: list: useful information; format [<confirmed cases>, <deaths>, <recovered>, <datetime.date object,
+        :returns: list: useful information; format [<country>, <confirmed cases>, <deaths>, <recovered>, <datetime.date object,
         latest update>]
         """
         self.country = country

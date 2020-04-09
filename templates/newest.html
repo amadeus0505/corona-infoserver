@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <link rel="icon" href="#">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/navbar.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/adminpage.css')}}">
-    <title>Adminpage</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/navbar.css')}}">
+    <title>Welcome</title>
+    <script type="text/javascript">
+    </script>
   </head>
   <body>
     <header>
@@ -31,15 +32,23 @@
       </div>
     </header>
     <main>
-      <h1>This is the Admin panel</h1>
-      <div class="update-wrapper">
-        <h3>If you want to update the entire databse click</h3>
-        <a href="/admin/update"><button class="button">HERE</button></a>
-      </div>
-      <div class="display-newest">
-        <h3>If you want to display the newest infos, click</h3>
-        <a href="/admin/newest"><button class="button">HERE</button></a>
-      </div>
+      <h1>Please choose a country in order to get the newest information</h1>
+      <form action="/admin/newest" method="get">
+        <div class="form_wrapper">
+          <select class="select" name="country" required>
+            {% for country in countries%}
+              <option id="{{country}}" value="{{country.lower().replace(' ','_')}}">{{country}}</option>
+            {% endfor %}
+          </select>
+          <br>
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      {% if country %}
+        <script type="text/javascript">
+          document.getElementById("{{country.replace("_",  "")}}").selected = true
+        </script>
+      {% endif %}
     </main>
   </body>
 </html>

@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, make_response, redirect, url_for, session
 from utils import data_db, handle_customer as customer, graph
+import update_corona_db
+from covidsession import Covid
 import datetime
 import os
 
 # TODO: (on country change -> javascript visible available dates -> get info through javascript with background
-#  python api); design adminpanel (watch out for mobile design); design sign up page
-#  for new user; fix server issues
+#  python api); design adminpanel (watch out for mobile design);
 #
 #
 
@@ -78,10 +79,40 @@ def validate_login():
 
 
 @server.route("/adminpage")
+@server.route("/admin")
+@server.route("/adminpanel")
 def adminpage():
     if "username" in session and session["username"] == "admin":
         return render_template("adminpage.html", username="admin")
     return redirect("/")
+
+
+@server.route("/admin/update")
+def update():
+    if "username" in session and session["username"] == "admin":
+        update_corona_db.update()
+        return redirect(request.referrer)
+    return redirect("/")
+
+
+@server.route("/admin/newest")
+def newest():
+    cov_session = Covid()
+    username = session["username"] if "username" in session else None
+    if "country" in request.args:
+        country = request.args.get("country")
+        _, confirmed, deaths, reco, date = cov_session.get_useful_info_by_country(country)
+        resp = make_response(
+            render_template("display_newest.html", country=country, confirmed=confirmed, deaths=deaths, reco=reco,
+                            date=str(date), username=username)
+        )
+        resp.set_cookie("country", country)
+        return resp
+
+    countries = cov_session.get_country_names()
+    countries.sort()
+    country = request.cookies.get("country")
+    return render_template("newest.html", countries=countries, country=country, username=username)
 
 
 @server.route("/signup")

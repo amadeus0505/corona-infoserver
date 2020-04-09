@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/navbar.css')}}">
     <title>Welcome</title>
     <script type="text/javascript">
-      function redirect(path) {
-        window.location.href = "/login";
-      }
     </script>
   </head>
   <body>
@@ -19,6 +16,9 @@
         <ul class="links">
           <li><a href="/">Home</a></li>
           <li><a href="/graphs">Graphs</a></li>
+          {%if username == "admin"%}
+          <li><a href="/adminpage">Adminpage</a></li>
+          {%endif%}
         </ul>
       </nav>
       <div>

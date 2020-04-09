@@ -19,6 +19,9 @@
         <ul class="links">
           <li><a href="/">Home</a></li>
           <li><a href="/graphs">Graphs</a></li>
+          {%if username == "admin"%}
+          <li><a href="/adminpage">Adminpage</a></li>
+          {%endif%}
         </ul>
       </nav>
       <div>
