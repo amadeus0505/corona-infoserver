@@ -1,3 +1,5 @@
 *.png
 database/customer.db
 database/corona_info.db
+__pycache__
+utils/__pycache__
